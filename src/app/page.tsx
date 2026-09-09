@@ -11,48 +11,94 @@ const ABOUT = [
   "[What are you looking for next — a specific role, freelance work, a particular kind of team?]",
 ];
 
-const EXPERIENCE: { role: string; org: string; period: string; summary: string }[] = [
+const EXPERIENCE: { role: string; org: string; location: string; period: string; bullets: string[] }[] = [
   {
-    role: "Vehicle Safety Operator",
+    role: "Vehicle Safety Operator, AV Test & Validation",
     org: "Avride (via HireArt)",
+    location: "Austin, TX",
     period: "Apr 2026 — Present",
-    summary:
-      "Operate autonomous vehicles in live on-road testing, collecting performance data on proprietary LiDAR and camera systems and reporting system behavior to engineering teams.",
+    bullets: [
+      "Operate autonomous vehicles safely and lawfully on Golden Rides missions, alternating between manual driving and supervising autonomous mode alongside remote operators",
+      "Support in-field testing and data collection, including hardware adjustments, software uploads, and basic technical troubleshooting",
+      "Monitor on-road system performance and submit detailed reports that feed engineering advancements and operational improvements",
+    ],
   },
   {
     role: "Validation Specialist / QA Test Engineer",
     org: "Join Parachute LLC",
+    location: "Austin, TX",
     period: "Mar 2023 — Jul 2025",
-    summary:
-      "Owned the validation process end to end for SaMD and regulated equipment under FDA 21 CFR Part 11/820 and ISO 13485. Built an automated solution for tracking validation progress and test coverage, plus an equipment management system with role-based permissions.",
+    bullets: [
+      "Owned validation end to end for SaMD and regulated equipment under FDA 21 CFR Part 11/820, ISO 13485/14971, and GAMP 5 — authoring plans, IQ/OQ/PQ protocols, risk assessments, and validation summary reports",
+      "Designed and built a fully automated system tracking validation progress, test coverage, and equipment lifecycle with role-based permissions",
+      "Built an AI-driven template filler that auto-generated validation and project plans, and contributed to a new Selenium-based regression test library",
+    ],
   },
   {
     role: "Autopilot Software Test Operator",
     org: "Tesla",
+    location: "Austin, TX",
     period: "Feb 2024 — Jun 2024",
-    summary:
-      "Executed structured test plans for Autopilot and Full Self-Driving, logging anomalies and performing post-drive log analysis that fed directly into engineering triage.",
+    bullets: [
+      "Drove engineering vehicles on 6–8 hour daily sessions collecting audio and camera data for Autopilot and Full Self-Driving training and testing",
+      "Logged software anomalies across structured test plans, contributing to measurable reductions in FSD disengagements",
+      "Performed post-drive log reviews and partnered with engineering to reproduce defects and validate firmware fixes",
+    ],
   },
   {
     role: "Validation Specialist / Software QA Test Engineer",
     org: "Google",
+    location: "Austin, TX",
     period: "Aug 2021 — Mar 2023",
-    summary:
-      "Designed and executed test cases for Google Maps and Wear OS across Agile sprints, including API testing, accessibility validation, and ADB/USB device debugging.",
+    bullets: [
+      "Designed and executed manual and exploratory test cases for Google Maps and Wear OS across Agile sprints",
+      "Performed API testing with Postman and wrote Python and SQL scripts to validate payloads, status codes, and backend data consistency",
+      "Conducted accessibility testing with NVDA, JAWS, TalkBack, and VoiceOver; built Power BI dashboards for defect trends and quality metrics",
+    ],
   },
   {
     role: "Fleet Response Specialist / Remote Assistance Dispatch",
     org: "Waymo",
+    location: "Austin, TX",
     period: "Aug 2018 — Nov 2019",
-    summary:
-      "Provided real-time human guidance to live driverless vehicles, building path solutions to resolve stuck-vehicle edge cases and supporting fleet escalations.",
+    bullets: [
+      "Provided real-time human guidance to live driverless vehicles, building path solutions for stuck-vehicle edge cases",
+      "Acted as on-shift point of contact for fleet escalations, intervening with precision guidance on safety-critical situations",
+      "Contributed to a pilot program on operator fatigue detection and trained new dispatchers on procedures",
+    ],
   },
   {
-    role: "Trust & Safety Quality Analyst",
-    org: "YouTube",
+    role: "Trust & Safety Quality Analyst / Data Validation Specialist",
+    org: "YouTube (Google)",
+    location: "Austin, TX",
     period: "Mar 2018 — Aug 2021",
-    summary:
-      "Audited large-scale content moderation workflows, running calibration audits measuring accuracy, agreement rates, and reviewer drift.",
+    bullets: [
+      "Performed large-scale quality analysis of content moderation workflows supporting global policy enforcement",
+      "Conducted calibration and quality audits measuring accuracy, agreement rates, and reviewer drift",
+      "Tracked Trust & Safety performance metrics and translated findings into guideline and workflow improvements",
+    ],
+  },
+  {
+    role: "Data Quality & Trust and Safety Specialist",
+    org: "Apple Maps",
+    location: "Austin, TX",
+    period: "Jul 2017 — Oct 2017",
+    bullets: [
+      "Validated large-scale geospatial points-of-interest datasets, ensuring data integrity and compliance with quality standards",
+      "Designed SQL-based validation and audit queries to surface systemic data quality issues across multi-source datasets",
+      "Developed repeatable validation workflows that improved risk detection and reduced manual review effort",
+    ],
+  },
+  {
+    role: "Jr. Test Engineer, Mobile & Hardware QA",
+    org: "Nexar Inc.",
+    location: "San Francisco, CA",
+    period: "Jul 2015 — Jan 2017",
+    bullets: [
+      "Tested AI-powered dash cameras and companion mobile apps on iOS and Android for stability, performance, and video sync",
+      "Wrote Python scripts to build data-driven test utilities simulating real-world capture and connectivity scenarios",
+      "Integrated automated test execution into CI pipelines, reducing test cycle time by 25%",
+    ],
   },
 ];
 
@@ -207,12 +253,22 @@ export default function Home() {
           <div className="space-y-10">
             {EXPERIENCE.map((job, i) => (
               <div key={i} className="grid sm:grid-cols-[200px_1fr] gap-2 sm:gap-8">
-                <div className="text-sm text-muted font-mono pt-1">{job.period}</div>
+                <div className="text-sm text-muted font-mono pt-1">
+                  {job.period}
+                  <div className="text-xs mt-1 opacity-70">{job.location}</div>
+                </div>
                 <div>
                   <h3 className="text-lg font-semibold">
                     {job.role} <span className="text-muted font-normal">· {job.org}</span>
                   </h3>
-                  <p className="mt-1.5 text-muted leading-relaxed">{job.summary}</p>
+                  <ul className="mt-2 space-y-1.5">
+                    {job.bullets.map((b, bi) => (
+                      <li key={bi} className="flex items-start gap-2 text-sm text-muted leading-relaxed">
+                        <span className="text-accent mt-1">›</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
