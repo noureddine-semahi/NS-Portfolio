@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "[Your Name] — Portfolio",
-  description: "[Your Name] — [Your Title]. Background, experience, and projects.",
+  title: "Noureddine Semahi — Portfolio",
+  description:
+    "Noureddine Semahi — Validation & QA Engineer · Web Developer · Data Analyst. Background, experience, and projects.",
   // Reachable by direct link, deliberately kept out of search — see
   // robots.txt for the backup layer. This is the part that actually works:
   // a robots.txt disallow alone can still let Google list a bare URL for a
