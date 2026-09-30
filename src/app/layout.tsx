@@ -19,7 +19,11 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   verification: {
-    google: "xWuuQKIUyau5MDuq2a4t0vZmdSinA9SwZrrTKN2O7EM",
+    // One token per Search Console property (vercel.app, then www domain).
+    google: [
+      "xWuuQKIUyau5MDuq2a4t0vZmdSinA9SwZrrTKN2O7EM",
+      "N7YsIr0g6WumdRbyX-i6ni0rmeavuqIaj3B9Pn7z5MM",
+    ],
   },
   openGraph: {
     type: "website",
