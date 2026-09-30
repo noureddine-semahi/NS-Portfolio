@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   ),
   title: TITLE,
   description: DESCRIPTION,
+  verification: {
+    google: "xWuuQKIUyau5MDuq2a4t0vZmdSinA9SwZrrTKN2O7EM",
+  },
   openGraph: {
     type: "website",
     siteName: "Noureddine Semahi",
