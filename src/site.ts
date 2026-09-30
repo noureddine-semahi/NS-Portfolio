@@ -1,10 +1,8 @@
 export const NAME = "Noureddine Semahi";
 
-// Vercel exposes the production domain at build time, so a custom domain is
-// picked up automatically. The fallback is the current deployment URL.
-export const SITE_URL = `https://${
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "ns-portfolio-mocha.vercel.app"
-}`;
+// Canonical address. The bare domain redirects here (configured in Vercel), so
+// the sitemap, robots.txt and social-preview URLs all use the www form.
+export const SITE_URL = "https://www.noureddinesemahi.com";
 
 export const HERO = {
   headline: "I find where complex systems fail, then build the fix.",
