@@ -1,5 +1,11 @@
 export const NAME = "Noureddine Semahi";
 
+// Vercel exposes the production domain at build time, so a custom domain is
+// picked up automatically. The fallback is the current deployment URL.
+export const SITE_URL = `https://${
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "ns-portfolio-mocha.vercel.app"
+}`;
+
 export const HERO = {
   headline: "I find where complex systems fail, then build the fix.",
   subhead:
