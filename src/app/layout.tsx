@@ -1,43 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  axes: ["opsz"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Noureddine Semahi — Portfolio",
+  title: "Noureddine Semahi — Validation & QA Engineer",
   description:
-    "Noureddine Semahi — Validation & QA Engineer · Web Developer · Data Analyst. Background, experience, and projects.",
-  // Reachable by direct link, deliberately kept out of search — see
-  // robots.txt for the backup layer. This is the part that actually works:
-  // a robots.txt disallow alone can still let Google list a bare URL for a
-  // page it was never allowed to crawl; noindex tells it to fully exclude
-  // the page (title, snippet, and URL) once crawled.
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
-  },
+    "Ten years in quality and validation: FDA-regulated medical device software, Google mobile and wearable platforms, and autonomous vehicles at Waymo, Tesla and Avride. Based in Austin, open to remote.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${bricolage.variable} h-full`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
