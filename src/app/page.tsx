@@ -6,6 +6,7 @@ import {
   CONTACT_EMAIL,
   EDUCATION,
   HERO,
+  LANGUAGES,
   LINKS,
   NAME,
   NAV,
@@ -89,20 +90,40 @@ export default function Home() {
                 </a>
               </div>
               <p className="feature__desc">{SHIPPED_PROJECT.description}</p>
+              <h4 className="feature__label">Engineering notes</h4>
               <ul className="ledger" role="list">
-                {SHIPPED_PROJECT.highlights.map((h, i) => (
+                {SHIPPED_PROJECT.engineeringNotes.map((n, i) => (
                   <li key={i} className="ledger__row">
-                    {h}
+                    {n}
                   </li>
                 ))}
               </ul>
+
+              <details className="feature__more">
+                <summary className="feature__more-summary">
+                  <span>Full feature list</span>
+                  <span className="role__toggle" aria-hidden="true" />
+                </summary>
+                {SHIPPED_PROJECT.groups.map((g) => (
+                  <div key={g.title} className="feature__group">
+                    <h4 className="feature__label">{g.title}</h4>
+                    <ul className="ledger" role="list">
+                      {g.items.map((item, i) => (
+                        <li key={i} className="ledger__row">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </details>
+
               <p className="feature__stack">Built with {SHIPPED_PROJECT.stack}.</p>
             </article>
 
-            <h3 className="h3">In design and specification</h3>
+            <h3 className="h3">In design and development</h3>
             <p className="lede">
               Fully scoped products with completed briefs, user stories, and business planning.
-              Development pending.
             </p>
             <dl className="defs reveal">
               {CONCEPT_PROJECTS.map((p) => (
@@ -110,6 +131,7 @@ export default function Home() {
                   <dt>
                     {p.name}
                     <span className="defs__sub">{p.tagline}</span>
+                    <span className="defs__status">{p.status}</span>
                   </dt>
                   <dd>{p.description}</dd>
                 </div>
@@ -139,6 +161,16 @@ export default function Home() {
                   <div className="defs__row" key={e.term}>
                     <dt>{e.term}</dt>
                     <dd>{e.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <h3 className="subhead">Languages</h3>
+              <dl className="defs defs--stack defs--inline">
+                {LANGUAGES.map((l) => (
+                  <div className="defs__row" key={l.term}>
+                    <dt>{l.term}</dt>
+                    <dd>{l.detail}</dd>
                   </div>
                 ))}
               </dl>
