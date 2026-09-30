@@ -9,10 +9,29 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
+const TITLE = "Noureddine Semahi — Validation & QA Engineer";
+const DESCRIPTION =
+  "Ten years in quality and validation: FDA-regulated medical device software, Google mobile and wearable platforms, and autonomous vehicles at Waymo, Tesla and Avride. Based in Austin, open to remote.";
+
 export const metadata: Metadata = {
-  title: "Noureddine Semahi — Validation & QA Engineer",
-  description:
-    "Ten years in quality and validation: FDA-regulated medical device software, Google mobile and wearable platforms, and autonomous vehicles at Waymo, Tesla and Avride. Based in Austin, open to remote.",
+  // Vercel exposes the production domain at build time, so a custom domain
+  // is picked up automatically. The fallback is the current deployment URL.
+  metadataBase: new URL(
+    `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "ns-portfolio-mocha.vercel.app"}`,
+  ),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Noureddine Semahi",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
